@@ -19,5 +19,18 @@ namespace BankAccountKataTest
             Money expected = new Money(5);
             account.Amount.Should().Be(expected);
         }
+
+        [TestMethod]
+        public void ClientWithdrawPositiveAmountWithoutSufficientSavings()
+        {
+            Client client = new Client();
+            Account account = new Account(new Money(5));
+            Money amount = new Money(10);
+
+            client.Withdraw(account, amount);
+
+            Money expected = new Money(5);
+            account.Amount.Should().Be(expected);
+        }
     }
 }
