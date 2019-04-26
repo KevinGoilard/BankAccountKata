@@ -16,7 +16,7 @@ namespace BankAccountKata
             return Value > 0;
         }
 
-        public Money Sum(Money money)
+        internal Money Sum(Money money)
         {
             return new Money(Value + money.Value);
         }
@@ -29,6 +29,11 @@ namespace BankAccountKata
         public static Money operator +(Money firstValue, Money secondValue)
         {
             return firstValue.Sum(secondValue);
+        }
+
+        public static Money operator -(Money firstValue, Money secondValue)
+        {
+            return firstValue.Sub(secondValue);
         }
     }
 }
