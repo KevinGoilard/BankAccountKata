@@ -14,8 +14,9 @@ namespace BankAccountKata
             if (amount.ValueIsPositive())
             {
                 account.Amount += amount;
+                return new Operation("Deposit", date, amount);
             }
-            return new Operation("Deposit", date, amount);
+            return new Operation("Invalid", date, amount);
         }
 
         public Operation Withdraw(Account account, Money amount)

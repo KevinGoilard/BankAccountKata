@@ -35,5 +35,18 @@ namespace BankAccountKataTest
             Operation expected = new Operation("Withdraw", exampleDate, amount);
             value.Should().Be(expected);
         }
+        
+        [TestMethod]
+        public void ClientInvalidDepositReturnAnInvalidOperation()
+        {
+            Client client = new Client();
+            Account account = new Account(new Money(15));
+            Money amount = new Money(-10);
+
+            Operation value = client.Deposit(account, amount, exampleDate);
+
+            Operation expected = new Operation("Invalid", exampleDate, amount);
+            value.Should().Be(expected);
+        }
     }
 }
