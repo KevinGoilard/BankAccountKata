@@ -55,5 +55,15 @@ namespace BankAccountKata
         {
             return firstValue.IsLessThan(secondValue);
         }
+
+        public static bool operator >=(Money firstValue, Money secondValue)
+        {
+            return firstValue.Value == secondValue.Value || firstValue > secondValue;
+        }
+
+        public static bool operator <=(Money firstValue, Money secondValue)
+        {
+            return firstValue.Value == secondValue.Value || firstValue < secondValue;
+        }
     }
 }

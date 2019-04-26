@@ -14,7 +14,7 @@ namespace BankAccountKata
 
         public void Withdraw(Account account, Money amount)
         {
-            if (account.Amount > amount)
+            if (account.Amount >= amount)
                 account.Amount -= amount;
         }
     }
