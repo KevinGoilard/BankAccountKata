@@ -4,12 +4,9 @@ namespace BankAccountKata
 {
     public class Client
     {
-        public void Deposit(Account account, Money amount)
+        public Operation Deposit(Account account, Money amount)
         {
-            if (amount.ValueIsPositive())
-            {
-                account.Amount += amount;
-            }
+            return Deposit(account, amount, DateTime.Now);
         }
 
         public Operation Deposit(Account account, Money amount, DateTime date)
