@@ -22,5 +22,18 @@ namespace BankAccountKataTest
             Operation expected = new Operation("Deposit", exampleDate, amount);
             value.Should().Be(expected);
         }
+
+        [TestMethod]
+        public void ClientWithdrawReturnAnOperation()
+        {
+            Client client = new Client();
+            Account account = new Account(new Money(15));
+            Money amount = new Money(10);
+
+            Operation value = client.Withdraw(account, amount, exampleDate);
+
+            Operation expected = new Operation("Withdraw", exampleDate, amount);
+            value.Should().Be(expected);
+        }
     }
 }

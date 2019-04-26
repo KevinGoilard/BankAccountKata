@@ -23,5 +23,12 @@ namespace BankAccountKata
             if (account.Amount >= amount)
                 account.Amount -= amount;
         }
+
+        public Operation Withdraw(Account account, Money amount, DateTime date)
+        {
+            if (account.Amount >= amount)
+                account.Amount -= amount;
+            return new Operation("Withdraw", date, amount);
+        }
     }
 }
