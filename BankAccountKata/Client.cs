@@ -18,10 +18,9 @@ namespace BankAccountKata
             return new Operation("Deposit", date, amount);
         }
 
-        public void Withdraw(Account account, Money amount)
+        public Operation Withdraw(Account account, Money amount)
         {
-            if (account.Amount >= amount)
-                account.Amount -= amount;
+            return Withdraw(account, amount, DateTime.Now);
         }
 
         public Operation Withdraw(Account account, Money amount, DateTime date)
