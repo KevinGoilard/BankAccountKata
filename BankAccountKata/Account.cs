@@ -27,9 +27,12 @@ namespace BankAccountKata
         }
         internal Operation Withdraw(Money amount, DateTime date)
         {
-            if (Amount >= amount)
+            if (amount.ValueIsPositive() && Amount >= amount)
+            {
                 Amount -= amount;
-            return new Operation("Withdraw", date, amount);
+                return new Operation("Withdraw", date, amount);
+            }
+            return new Operation("Invalid", date, amount);
         }
     }
 }
