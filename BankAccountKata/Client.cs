@@ -2,11 +2,12 @@
 {
     public class Client
     {
-        public void Deposit(Account account, int v)
+        public void Deposit(Account account, int amount)
         {
-            if (v < 0)
-                return;
-            account.Amount += 10;
+            if (amount > 0)
+            {
+                account.Amount += amount;
+            }
         }
     }
 }
