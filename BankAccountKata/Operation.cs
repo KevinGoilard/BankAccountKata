@@ -28,9 +28,14 @@ namespace BankAccountKata
             return new Money(0);
         }
 
+        public bool IsValid()
+        {
+            return operationType != InvalidOperation;
+        }
+
         public override string ToString()
         {
-            return string.Format("{0,-10}\t{1,-20}\t{2,10}\t{3,10}", operationType, date.ToLongDateString(), value, ComputeBalance());
+            return string.Format("{0,-10}|{1,-30}|{2,10}|{3,10}", operationType, date.ToLongDateString(), value, ComputeBalance());
         }
     }
 }

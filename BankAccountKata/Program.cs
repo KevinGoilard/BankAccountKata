@@ -18,7 +18,10 @@ namespace BankAccountKata
             client.Deposit(account, minusTen);
 
             Printer printer = new Printer();
-
+            Console.WriteLine("Account history without invalids");
+            Console.Write(printer.ComputeAccountPrintWithoutInvalids(account));
+            Console.WriteLine();
+            Console.WriteLine("Account history with invalids");
             Console.Write(printer.ComputeAccountPrint(account));
             Console.ReadKey();
 
