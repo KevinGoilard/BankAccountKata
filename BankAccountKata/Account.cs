@@ -1,38 +1,46 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace BankAccountKata
 {
     public class Account
     {
         public Money Amount { get; private set; }
+        public List<Operation> Historique { get; private set; }
 
-        public Account()
+
+        public Account() : this(new Money(0))
         {
-            Amount = new Money(0);
         }
 
         public Account(Money initialValue)
         {
             Amount = initialValue;
+            Historique = new List<Operation>();
         }
 
         internal Operation Deposit(Money amount, DateTime date)
         {
+            Operation result = new Operation("Invalid", date, amount);
             if (amount.ValueIsPositive())
             {
                 Amount += amount;
-                return new Operation("Deposit", date, amount);
+                result = new Operation("Deposit", date, amount);
             }
-            return new Operation("Invalid", date, amount);
+            Historique.Add(result);
+            return result;
         }
+
         internal Operation Withdraw(Money amount, DateTime date)
         {
+            Operation result = new Operation("Invalid", date, amount);
             if (amount.ValueIsPositive() && Amount >= amount)
             {
                 Amount -= amount;
-                return new Operation("Withdraw", date, amount);
+                result = new Operation("Withdraw", date, amount);
             }
-            return new Operation("Invalid", date, amount);
+            Historique.Add(result);
+            return result;
         }
     }
 }
