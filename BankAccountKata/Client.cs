@@ -11,12 +11,7 @@ namespace BankAccountKata
 
         public Operation Deposit(Account account, Money amount, DateTime date)
         {
-            if (amount.ValueIsPositive())
-            {
-                account.Amount += amount;
-                return new Operation("Deposit", date, amount);
-            }
-            return new Operation("Invalid", date, amount);
+            return account.Deposit(amount, date);
         }
 
         public Operation Withdraw(Account account, Money amount)
@@ -26,9 +21,7 @@ namespace BankAccountKata
 
         public Operation Withdraw(Account account, Money amount, DateTime date)
         {
-            if (account.Amount >= amount)
-                account.Amount -= amount;
-            return new Operation("Withdraw", date, amount);
+            return account.Withdraw(amount, date);
         }
     }
 }
