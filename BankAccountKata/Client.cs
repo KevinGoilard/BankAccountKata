@@ -6,7 +6,7 @@
         {
             if (amount.ValueIsPositive())
             {
-                account.Amount = account.Amount.Sum(amount);
+                account.Amount += amount;
             }
         }
     }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BankAccountKata
+﻿namespace BankAccountKata
 {
     public struct Money
     {
@@ -23,6 +17,11 @@ namespace BankAccountKata
         public Money Sum(Money money)
         {
             return new Money(Value + money.Value);
+        }
+
+        public static Money operator +(Money firstValue, Money secondValue)
+        {
+            return firstValue.Sum(secondValue);
         }
     }
 }
