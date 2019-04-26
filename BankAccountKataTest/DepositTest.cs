@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FluentAssertions;
+using BankAccountKata;
 
 namespace BankAccountKataTest
 {
@@ -7,9 +8,14 @@ namespace BankAccountKataTest
     public class DepositTest
     {
         [TestMethod]
-        public void UnitTestingVerification()
+        public void ClientDepositPositiveAmount()
         {
-            true.Should().Be(true);
+            Client client = new Client();
+            Account account = new Account();
+
+            client.Deposit(account, 10);
+
+            account.Amount.Should().Be(10);
         }
     }
 }
