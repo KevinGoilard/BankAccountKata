@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BankAccountKata
+﻿namespace BankAccountKata
 {
     public class Client
     {
         public void Deposit(Account account, int v)
         {
+            if (v < 0)
+                return;
             account.Amount += 10;
         }
     }
