@@ -2,6 +2,6 @@
 {
     public class Account
     {
-        public int Amount { get; set; }
+        public Money Amount { get; set; }
     }
 }

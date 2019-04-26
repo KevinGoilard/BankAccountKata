@@ -11,10 +11,12 @@ namespace BankAccountKataTest
         {
             Client client = new Client();
             Account account = new Account();
+            Money amount = new Money(10);
 
-            client.Deposit(account, 10);
+            client.Deposit(account, amount);
 
-            account.Amount.Should().Be(10);
+            Money expected = amount;
+            account.Amount.Should().Be(expected);
         }
 
         [TestMethod]
@@ -22,10 +24,12 @@ namespace BankAccountKataTest
         {
             Client client = new Client();
             Account account = new Account();
+            Money amount = new Money(-5);
 
-            client.Deposit(account, -5);
+            client.Deposit(account, amount);
 
-            account.Amount.Should().Be(0);
+            Money expected = new Money(0);
+            account.Amount.Should().Be(expected);
         }
     }
 }

@@ -2,11 +2,11 @@
 {
     public class Client
     {
-        public void Deposit(Account account, int amount)
+        public void Deposit(Account account, Money amount)
         {
-            if (amount > 0)
+            if (amount.ValueIsPositive())
             {
-                account.Amount += amount;
+                account.Amount = account.Amount.Sum(amount);
             }
         }
     }
