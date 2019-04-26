@@ -46,6 +46,11 @@ namespace BankAccountKata
             return firstValue.Sub(secondValue);
         }
 
+        public static Money operator -(Money money)
+        {
+            return new Money(-money.Value);
+        }
+
         public static bool operator >(Money firstValue, Money secondValue)
         {
             return firstValue.IsMoreThan(secondValue);
@@ -64,6 +69,11 @@ namespace BankAccountKata
         public static bool operator <=(Money firstValue, Money secondValue)
         {
             return firstValue.Value == secondValue.Value || firstValue < secondValue;
+        }
+
+        public override string ToString()
+        {
+            return Value.ToString();
         }
     }
 }

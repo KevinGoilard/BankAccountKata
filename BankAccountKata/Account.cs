@@ -42,5 +42,14 @@ namespace BankAccountKata
             Historique.Add(result);
             return result;
         }
+
+        public override string ToString()
+        {
+            string content = string.Format("{0,-10}\t{1,-20}\t{2,-10}\t{3,-10}\n", "Operation", "Date", "Valeur", "Balance");
+            Printer printer = new Printer();
+            content += printer.ComputeHistory(this);
+            return content;
+            
+        }
     }
 }

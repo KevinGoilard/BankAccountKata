@@ -77,5 +77,39 @@ namespace BankAccountKataTest
             account.Historique.Should().Contain(depositValue);
             account.Historique.Should().Contain(withdrawValue);
         }
+
+        [TestMethod]
+        public void OperationBalanceIsPositiveForValidDeposit()
+        {
+            Money amount = new Money(10);
+            Operation operation = new Operation(Operation.DepositOperation, exampleDate, amount);
+
+            Money value = operation.ComputeBalance();
+
+            value.Should().Be(amount);
+        }
+
+        [TestMethod]
+        public void OperationBalanceIsNegativeForValidWithdraw()
+        {
+            Money amount = new Money(10);
+            Operation operation = new Operation(Operation.WithdrawOperation, exampleDate, amount);
+
+            Money value = operation.ComputeBalance();
+
+            value.Should().Be(-amount);
+        }
+
+        [TestMethod]
+        public void OperationBalanceIsZeroForInvalidOperation()
+        {
+            Money amount = new Money(10);
+            Operation operation = new Operation(Operation.InvalidOperation, exampleDate, amount);
+
+            Money value = operation.ComputeBalance();
+
+            Money expected = new Money(0);
+            value.Should().Be(expected);
+        }
     }
 }
