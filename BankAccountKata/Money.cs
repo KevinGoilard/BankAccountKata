@@ -26,6 +26,16 @@ namespace BankAccountKata
             return new Money(Value - money.Value);
         }
 
+        internal bool IsMoreThan(Money money)
+        {
+            return Value > money.Value;
+        }
+
+        internal bool IsLessThan(Money money)
+        {
+            return Value < money.Value;
+        }
+
         public static Money operator +(Money firstValue, Money secondValue)
         {
             return firstValue.Sum(secondValue);
@@ -34,6 +44,16 @@ namespace BankAccountKata
         public static Money operator -(Money firstValue, Money secondValue)
         {
             return firstValue.Sub(secondValue);
+        }
+
+        public static bool operator >(Money firstValue, Money secondValue)
+        {
+            return firstValue.IsMoreThan(secondValue);
+        }
+
+        public static bool operator <(Money firstValue, Money secondValue)
+        {
+            return firstValue.IsLessThan(secondValue);
         }
     }
 }
