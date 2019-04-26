@@ -19,7 +19,7 @@ namespace BankAccountKataTest
 
             Operation value = client.Deposit(account, amount, exampleDate);
 
-            Operation expected = new Operation("Deposit", exampleDate, amount);
+            Operation expected = new Operation(Operation.DepositOperation, exampleDate, amount);
             value.Should().Be(expected);
         }
 
@@ -32,7 +32,7 @@ namespace BankAccountKataTest
 
             Operation value = client.Withdraw(account, amount, exampleDate);
 
-            Operation expected = new Operation("Withdraw", exampleDate, amount);
+            Operation expected = new Operation(Operation.WithdrawOperation, exampleDate, amount);
             value.Should().Be(expected);
         }
 
@@ -45,7 +45,7 @@ namespace BankAccountKataTest
 
             Operation value = client.Deposit(account, amount, exampleDate);
 
-            Operation expected = new Operation("Invalid", exampleDate, amount);
+            Operation expected = new Operation(Operation.InvalidOperation, exampleDate, amount);
             value.Should().Be(expected);
         }
 
@@ -60,7 +60,7 @@ namespace BankAccountKataTest
 
             Operation operationValue = client.Withdraw(account, amount, exampleDate);
 
-            Operation expected = new Operation("Invalid", exampleDate, amount);
+            Operation expected = new Operation(Operation.InvalidOperation, exampleDate, amount);
             operationValue.Should().Be(expected);
         }
 

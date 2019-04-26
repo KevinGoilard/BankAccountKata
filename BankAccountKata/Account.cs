@@ -21,11 +21,11 @@ namespace BankAccountKata
 
         internal Operation Deposit(Money amount, DateTime date)
         {
-            Operation result = new Operation("Invalid", date, amount);
+            Operation result = new Operation(Operation.InvalidOperation, date, amount);
             if (amount.ValueIsPositive())
             {
                 Amount += amount;
-                result = new Operation("Deposit", date, amount);
+                result = new Operation(Operation.DepositOperation, date, amount);
             }
             Historique.Add(result);
             return result;
@@ -33,11 +33,11 @@ namespace BankAccountKata
 
         internal Operation Withdraw(Money amount, DateTime date)
         {
-            Operation result = new Operation("Invalid", date, amount);
+            Operation result = new Operation(Operation.InvalidOperation, date, amount);
             if (amount.ValueIsPositive() && Amount >= amount)
             {
                 Amount -= amount;
-                result = new Operation("Withdraw", date, amount);
+                result = new Operation(Operation.WithdrawOperation, date, amount);
             }
             Historique.Add(result);
             return result;
