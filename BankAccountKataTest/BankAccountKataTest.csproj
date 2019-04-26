@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="DepositTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WithdrawTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,4 +1,6 @@
-﻿namespace BankAccountKata
+﻿using System;
+
+namespace BankAccountKata
 {
     public struct Money
     {
@@ -17,6 +19,11 @@
         public Money Sum(Money money)
         {
             return new Money(Value + money.Value);
+        }
+
+        internal Money Sub(Money money)
+        {
+            return new Money(Value - money.Value);
         }
 
         public static Money operator +(Money firstValue, Money secondValue)

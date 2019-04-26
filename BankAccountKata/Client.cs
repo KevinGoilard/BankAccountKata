@@ -1,4 +1,6 @@
-﻿namespace BankAccountKata
+﻿using System;
+
+namespace BankAccountKata
 {
     public class Client
     {
@@ -8,6 +10,11 @@
             {
                 account.Amount += amount;
             }
+        }
+
+        public void Withdraw(Account account, Money amount)
+        {
+            account.Amount = account.Amount.Sub(amount);
         }
     }
 }
