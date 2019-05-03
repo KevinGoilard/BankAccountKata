@@ -7,7 +7,7 @@ namespace BankAccountKata
     public class Account
     {
         public Money Amount { get; private set; }
-        public List<Operation> Historique { get; }
+        private readonly History history;
 
 
         public Account() : this(new Money(0))
@@ -17,7 +17,22 @@ namespace BankAccountKata
         public Account(Money initialValue)
         {
             Amount = initialValue;
-            Historique = new List<Operation>();
+            history = new History();
+        }
+
+        public List<string> GetOperationStrings()
+        {
+            return history.GetOperationStrings();
+        }
+
+        public List<string> GetOnlyValidOperationStrings()
+        {
+            return history.GetOnlyValidOperationStrings();
+        }
+
+        public Money ComputeBalance()
+        {
+            return history.ComputeBalance();
         }
 
         internal Operation Deposit(Money amount, DateTime date)
@@ -28,7 +43,7 @@ namespace BankAccountKata
                 Amount += amount;
                 result = new DepositOperation(date, amount);
             }
-            Historique.Add(result);
+            history.Add(result);
             return result;
         }
 
@@ -40,7 +55,7 @@ namespace BankAccountKata
                 Amount -= amount;
                 result = new WithdrawOperation(date, amount);
             }
-            Historique.Add(result);
+            history.Add(result);
             return result;
         }
     }

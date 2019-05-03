@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BankAccountKata
@@ -8,14 +9,16 @@ namespace BankAccountKata
         public string ComputeHistory(Account account)
         {
             StringBuilder builder = new StringBuilder();
-            account.Historique.ForEach(operation => builder.AppendLine(operation.ToString()));
+            List<string> operationStrings = account.GetOperationStrings();
+            operationStrings.ForEach(s => builder.AppendLine(s));
             return builder.ToString();
         }
 
         public string ComputeHistoryWithoutInvalids(Account account)
         {
             StringBuilder builder = new StringBuilder();
-            account.Historique.ForEach(operation => { if (operation.IsValid()) { builder.AppendLine(operation.ToString()); } });
+            List<string> operationStrings = account.GetOnlyValidOperationStrings();
+            operationStrings.ForEach(s => builder.AppendLine(s));
             return builder.ToString();
         }
 
@@ -39,7 +42,7 @@ namespace BankAccountKata
 
         public string ComputeTotal(Account account)
         {
-            int balance = account.Historique.Sum(operation => operation.ComputeBalance().Value);
+            Money balance = account.ComputeBalance();
             string content = Format("", "", account.Amount.ToString(), balance.ToString());
             return content;
         }

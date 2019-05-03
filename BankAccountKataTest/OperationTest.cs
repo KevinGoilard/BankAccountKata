@@ -66,20 +66,6 @@ namespace BankAccountKataTest
         }
 
         [TestMethod]
-        public void AccountSaveTheOperations()
-        {
-            Client client = new Client();
-            Account account = new Account(new Money(15));
-            Money amount = new Money(10);
-
-            Operation depositValue = client.Deposit(account, amount, exampleDate);
-            Operation withdrawValue = client.Withdraw(account, amount, exampleDate);
-
-            account.Historique.Should().Contain(depositValue);
-            account.Historique.Should().Contain(withdrawValue);
-        }
-
-        [TestMethod]
         public void OperationBalanceIsPositiveForValidDeposit()
         {
             Money amount = new Money(10);
