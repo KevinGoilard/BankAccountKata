@@ -17,10 +17,11 @@ namespace BankAccountKata.Operations
         {
             return false;
         }
-
+        
         public override string ToString()
         {
-            return string.Format("{0,-10}|{1,-30}|{2,10}|{3,10}", InvalidOperation, date.ToLongDateString(), value, ComputeBalance());
+            Printer printer = new Printer();
+            return printer.FormatOperation(InvalidOperation, date.ToLongDateString(), value.ToString(), ComputeBalance().ToString());
         }
     }
 }

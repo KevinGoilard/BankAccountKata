@@ -33,15 +33,25 @@ namespace BankAccountKata
 
         public string ComputeHeader()
         {
-            string content = string.Format("{0,-10}|{1,-30}|{2,-10}|{3,-10}", "Operation", "Date", "Valeur", "Balance");
+            string content = Format("Operation", "Date", "Valeur", "Balance");
             return content;
         }
 
         public string ComputeTotal(Account account)
         {
             int balance = account.Historique.Sum(operation => operation.ComputeBalance().Value);
-            string content = string.Format("{0,-10}|{1,-30}|{2,-10}|{3,-10}", "", "", account.Amount, balance);
+            string content = Format("", "", account.Amount.ToString(), balance.ToString());
             return content;
+        }
+
+        public string Format(string operation, string date, string value, string balance)
+        {
+            return string.Format("{0,-10}|{1,-30}|{2,-10}|{3,-10}", operation, date, value, balance);
+        }
+
+        internal string FormatOperation(string operation, string date, string value, string balance)
+        {
+            return string.Format("{0,-10}|{1,-30}|{2,10}|{3,10}", operation, date, value, balance);
         }
     }
 }
