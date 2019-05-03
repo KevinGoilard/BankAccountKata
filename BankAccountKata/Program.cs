@@ -2,9 +2,15 @@
 
 namespace BankAccountKata
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
+        {
+            RunExample();
+            Console.ReadKey();
+        }
+
+        public static void RunExample()
         {
             Client client = new Client();
             Account account = new Account(new Money(15));
@@ -19,12 +25,12 @@ namespace BankAccountKata
 
             Printer printer = new Printer();
             Console.WriteLine("Account history without invalids");
+            Console.WriteLine(printer.ComputeHeader());
             Console.Write(printer.ComputeAccountPrintWithoutInvalids(account));
             Console.WriteLine();
             Console.WriteLine("Account history with invalids");
+            Console.WriteLine(printer.ComputeHeader());
             Console.Write(printer.ComputeAccountPrint(account));
-            Console.ReadKey();
-
         }
     }
 }

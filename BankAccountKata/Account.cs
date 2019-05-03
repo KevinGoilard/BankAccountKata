@@ -27,7 +27,6 @@ namespace BankAccountKata
             {
                 Amount += amount;
                 result = new DepositOperation(date, amount);
-                //result = new Operation(Operation.DepositOperation, date, amount);
             }
             Historique.Add(result);
             return result;

@@ -59,6 +59,7 @@
     <Compile Include="DepositTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="OperationTest.cs" />
+    <Compile Include="PrinterTest.cs" />
     <Compile Include="WithdrawTest.cs" />
   </ItemGroup>
   <ItemGroup>
