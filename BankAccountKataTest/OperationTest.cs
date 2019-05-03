@@ -1,5 +1,6 @@
 ﻿using System;
 using BankAccountKata;
+using BankAccountKata.Operations;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -19,7 +20,7 @@ namespace BankAccountKataTest
 
             Operation value = client.Deposit(account, amount, exampleDate);
 
-            Operation expected = new Operation(Operation.DepositOperation, exampleDate, amount);
+            Operation expected = new DepositOperation(exampleDate, amount);
             value.Should().Be(expected);
         }
 
@@ -32,7 +33,7 @@ namespace BankAccountKataTest
 
             Operation value = client.Withdraw(account, amount, exampleDate);
 
-            Operation expected = new Operation(Operation.WithdrawOperation, exampleDate, amount);
+            Operation expected = new WithdrawOperation(exampleDate, amount);
             value.Should().Be(expected);
         }
 
@@ -45,7 +46,7 @@ namespace BankAccountKataTest
 
             Operation value = client.Deposit(account, amount, exampleDate);
 
-            Operation expected = new Operation(Operation.InvalidOperation, exampleDate, amount);
+            Operation expected = new InvalidOperation(exampleDate, amount);
             value.Should().Be(expected);
         }
 
@@ -60,7 +61,7 @@ namespace BankAccountKataTest
 
             Operation operationValue = client.Withdraw(account, amount, exampleDate);
 
-            Operation expected = new Operation(Operation.InvalidOperation, exampleDate, amount);
+            Operation expected = new InvalidOperation(exampleDate, amount);
             operationValue.Should().Be(expected);
         }
 
@@ -82,7 +83,7 @@ namespace BankAccountKataTest
         public void OperationBalanceIsPositiveForValidDeposit()
         {
             Money amount = new Money(10);
-            Operation operation = new Operation(Operation.DepositOperation, exampleDate, amount);
+            Operation operation = new DepositOperation(exampleDate, amount);
 
             Money value = operation.ComputeBalance();
 
@@ -93,7 +94,7 @@ namespace BankAccountKataTest
         public void OperationBalanceIsNegativeForValidWithdraw()
         {
             Money amount = new Money(10);
-            Operation operation = new Operation(Operation.WithdrawOperation, exampleDate, amount);
+            Operation operation = new WithdrawOperation(exampleDate, amount);
 
             Money value = operation.ComputeBalance();
 
@@ -104,7 +105,7 @@ namespace BankAccountKataTest
         public void OperationBalanceIsZeroForInvalidOperation()
         {
             Money amount = new Money(10);
-            Operation operation = new Operation(Operation.InvalidOperation, exampleDate, amount);
+            Operation operation = new InvalidOperation(exampleDate, amount);
 
             Money value = operation.ComputeBalance();
 

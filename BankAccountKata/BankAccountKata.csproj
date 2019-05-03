@@ -44,8 +44,11 @@
   <ItemGroup>
     <Compile Include="Account.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="Operations\DepositOperation.cs" />
     <Compile Include="Money.cs" />
-    <Compile Include="Operation.cs" />
+    <Compile Include="Operations\InvalidOperation.cs" />
+    <Compile Include="Operations\Operation.cs" />
+    <Compile Include="Operations\WithdrawOperation.cs" />
     <Compile Include="Printer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

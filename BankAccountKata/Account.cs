@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BankAccountKata.Operations;
 
 namespace BankAccountKata
 {
@@ -21,11 +22,12 @@ namespace BankAccountKata
 
         internal Operation Deposit(Money amount, DateTime date)
         {
-            Operation result = new Operation(Operation.InvalidOperation, date, amount);
+            Operation result = new InvalidOperation(date, amount);
             if (amount.ValueIsPositive())
             {
                 Amount += amount;
-                result = new Operation(Operation.DepositOperation, date, amount);
+                result = new DepositOperation(date, amount);
+                //result = new Operation(Operation.DepositOperation, date, amount);
             }
             Historique.Add(result);
             return result;
@@ -33,11 +35,11 @@ namespace BankAccountKata
 
         internal Operation Withdraw(Money amount, DateTime date)
         {
-            Operation result = new Operation(Operation.InvalidOperation, date, amount);
+            Operation result = new InvalidOperation(date, amount);
             if (amount.ValueIsPositive() && Amount >= amount)
             {
                 Amount -= amount;
-                result = new Operation(Operation.WithdrawOperation, date, amount);
+                result = new WithdrawOperation(date, amount);
             }
             Historique.Add(result);
             return result;
