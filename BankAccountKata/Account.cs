@@ -7,7 +7,7 @@ namespace BankAccountKata
     public class Account
     {
         public Money Amount { get; private set; }
-        public List<Operation> Historique { get; private set; }
+        public List<Operation> Historique { get; }
 
 
         public Account() : this(new Money(0))

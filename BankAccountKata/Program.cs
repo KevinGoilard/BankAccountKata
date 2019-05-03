@@ -26,10 +26,12 @@ namespace BankAccountKata
             Printer printer = new Printer();
             Console.WriteLine("Account history without invalids");
             Console.WriteLine(printer.ComputeHeader());
+            Console.WriteLine(printer.ComputeTotal(account));
             Console.Write(printer.ComputeAccountPrintWithoutInvalids(account));
             Console.WriteLine();
             Console.WriteLine("Account history with invalids");
             Console.WriteLine(printer.ComputeHeader());
+            Console.WriteLine(printer.ComputeTotal(account));
             Console.Write(printer.ComputeAccountPrint(account));
         }
     }

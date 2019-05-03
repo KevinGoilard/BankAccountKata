@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Linq;
+using System.Text;
 
 namespace BankAccountKata
 {
@@ -33,6 +34,13 @@ namespace BankAccountKata
         public string ComputeHeader()
         {
             string content = string.Format("{0,-10}|{1,-30}|{2,-10}|{3,-10}", "Operation", "Date", "Valeur", "Balance");
+            return content;
+        }
+
+        public string ComputeTotal(Account account)
+        {
+            int balance = account.Historique.Sum(operation => operation.ComputeBalance().Value);
+            string content = string.Format("{0,-10}|{1,-30}|{2,-10}|{3,-10}", "", "", account.Amount, balance);
             return content;
         }
     }
