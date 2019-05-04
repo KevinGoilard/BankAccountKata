@@ -9,7 +9,7 @@ namespace BankAccountKataTest
     [TestClass]
     public class PrinterTest
     {
-        string path = @"C:\Users\lenovo_3\source\repos\BankAccountKata\GoldenMaster.txt";
+        string path = @"..\..\GoldenMaster.txt";
 
         [TestMethod]
         [Ignore]

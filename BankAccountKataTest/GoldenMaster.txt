@@ -1,0 +1,13 @@
+Account history without invalids
+Operation |Date                          |Valeur    |Balance   
+          |                              |10        |-5        
+Withdraw  |samedi 4 mai 2019             |        10|       -10
+Deposit   |samedi 4 mai 2019             |         5|         5
+
+Account history with invalids
+Operation |Date                          |Valeur    |Balance   
+          |                              |10        |-5        
+Withdraw  |samedi 4 mai 2019             |        10|       -10
+Invalid   |samedi 4 mai 2019             |       -10|         0
+Deposit   |samedi 4 mai 2019             |         5|         5
+Invalid   |samedi 4 mai 2019             |       -10|         0
